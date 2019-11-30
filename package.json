@@ -1,5 +1,5 @@
 {
-  "name": "@iarna/toml",
+  "name": "@tauri-apps/toml",
   "version": "2.2.3",
   "main": "toml.js",
   "scripts": {
@@ -72,10 +72,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iarna/iarna-toml.git"
+    "url": "git+https://github.com/tauri-apps/tauri-toml.git"
   },
   "bugs": {
-    "url": "https://github.com/iarna/iarna-toml/issues"
+    "url": "https://github.com/tauri-apps/tauri-toml/issues"
   },
-  "homepage": "https://github.com/iarna/iarna-toml#readme"
+  "homepage": "https://github.com/tauri-apps/tauri-toml#readme"
 }
