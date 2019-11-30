@@ -2,6 +2,13 @@
   "name": "@tauri-apps/toml",
   "version": "2.2.3",
   "main": "toml.js",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/tauri"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "tap -J --100 test/*.js test/toml-stream/*.js",
     "benchmark": "node benchmark.js && node benchmark-per-file.js && node results2table.js",
