@@ -1,4 +1,6 @@
-# @iarna/toml
+# @tauri-apps/toml
+
+## This is a fork of iarna-toml so that we can make some needed modifations for `tauri`.
 
 Better TOML parsing and stringifying all in that familiar JSON interface.
 
@@ -13,7 +15,7 @@ The most recent version as of 2018-07-26: [v0.5.0](https://github.com/mojombo/to
 ### Example
 
 ```js
-const TOML = require('@iarna/toml')
+const TOML = require('@tauri-apps/toml')
 const obj = TOML.parse(`[abc]
 foo = 123
 bar = [1,2,3]`)
@@ -31,7 +33,7 @@ bar = [ 1, 2, 3 ]
 Visit the project github [for more examples](https://github.com/iarna/iarna-toml/tree/latest/examples)!
 
 
-## Why @iarna/toml
+## Why @tauri-apps/toml
 
 * See [TOML-SPEC-SUPPORT](https://shared.by.re-becca.org/misc/TOML-SPEC-SUPPORT.html) for a comparison of which TOML features
   are supported by the various Node.js TOML parsers.
@@ -42,10 +44,10 @@ Visit the project github [for more examples](https://github.com/iarna/iarna-toml
   newcomer [`@ltd/j-toml`](https://www.npmjs.com/package/@ltd/j-toml) has
   appeared with 0.5 support and astoundingly fast parsing speeds for large
   text blocks. All I can say is you'll have to test your specific work loads
-  if you want to know which of @iarna/toml and @ltd/j-toml is faster for
+  if you want to know which of @tauri-apps/toml and @ltd/j-toml is faster for
   you, as we currently excell in different areas
 * Careful adherence to spec. Tests go beyond simple coverage.
-* Smallest parser bundle (if you use `@iarna/toml/parse-string`).
+* Smallest parser bundle (if you use `@tauri-apps/toml/parse-string`).
 * No deps.
 * Detailed and easy to read error messages‼
 
@@ -60,14 +62,14 @@ Error: Unexpected character, expecting string, number, datetime, boolean, inline
 
 ## TOML.parse(str) → Object [(example)](https://github.com/iarna/iarna-toml/blob/latest/examples/parse.js)
 
-Also available with: `require('@iarna/toml/parse-string')`
+Also available with: `require('@tauri-apps/toml/parse-string')`
 
 Synchronously parse a TOML string and return an object.
 
 
 ## TOML.stringify(obj) → String [(example)](https://github.com/iarna/iarna-toml/blob/latest/examples/stringify.js)
 
-Also available with: `require('@iarna/toml/stringify)`
+Also available with: `require('@tauri-apps/toml/stringify)`
 
 Serialize an object as TOML.
 
@@ -85,7 +87,7 @@ same as native `Date` objects, in this respect.
 
 ## TOML.stringify.value(obj) -> String
 
-Also available with: `require('@iarna/toml/stringify').value`
+Also available with: `require('@tauri-apps/toml/stringify').value`
 
 Serialize a value as TOML would.  This is a fragment and not a complete
 valid TOML document.
@@ -98,7 +100,7 @@ tie-up the event loop while it parses.
 
 ### TOML.parse.async(str[, opts]) → Promise(Object) [(example)](https://github.com/iarna/iarna-toml/blob/latest/examples/parse-async.js)
 
-Also available with: `require('@iarna/toml/parse-async')`
+Also available with: `require('@tauri-apps/toml/parse-async')`
 
 `opts.blocksize` is the amount text to parser per pass through the event loop. Defaults to 40kb.
 
@@ -106,13 +108,13 @@ Asynchronously parse a TOML string and return a promise of the resulting object.
 
 ### TOML.parse.stream(readable) → Promise(Object) [(example)](https://github.com/iarna/iarna-toml/blob/latest/examples/parse-stream-readable.js)
 
-Also available with: `require('@iarna/toml/parse-stream')`
+Also available with: `require('@tauri-apps/toml/parse-stream')`
 
 Given a readable stream, parse it as it feeds us data. Return a promise of the resulting object.
 
 ### readable.pipe(TOML.parse.stream()) → Transform [(example)](https://github.com/iarna/iarna-toml/blob/latest/examples/parse-stream-through.js)
 
-Also available with: `require('@iarna/toml/parse-stream')`
+Also available with: `require('@tauri-apps/toml/parse-stream')`
 
 Returns a transform stream in object mode.  When it completes, emit the
 resulting object. Only one object will ever be emitted.
@@ -122,7 +124,7 @@ resulting object. Only one object will ever be emitted.
 You construct a parser object, per TOML file you want to process:
 
 ```js
-const TOMLParser = require('@iarna/toml/lib/toml-parser.js')
+const TOMLParser = require('@tauri-apps/toml/lib/toml-parser.js')
 const parser = new TOMLParser()
 ```
 
@@ -155,7 +157,7 @@ const newErr = prettyError(err, sourceString)
 
 Version 2 of this module supports TOML 0.5.0.  Other modules currently
 published to the npm registry support 0.4.0.  0.5.0 is mostly backwards
-compatible with 0.4.0, but if you have need, you can install @iarna/toml@1
+compatible with 0.4.0, but if you have need, you can install @tauri-apps/toml@1
 to get a version of this module that supports 0.4.0.  Please see the
 [CHANGELOG](CHANGELOG.md#2.0.0) for details on exactly whats changed.
 
@@ -197,7 +199,7 @@ $ npm run benchmark
 ```
 
 The results below are from my laptop using Node 11.10.0.  The library
-versions tested were `@iarna/toml@2.2.2`, `toml-j0.4@1.1.1`, `toml@3.0.0`,
+versions tested were `@tauri-apps/toml@2.2.2`, `toml-j0.4@1.1.1`, `toml@3.0.0`,
 `@sgarciac/bombadil@2.1.0` and `@ltd/j-toml@0.5.47`.  The speed value is
 megabytes-per-second that the parser can process of that document type.
 Bigger is better. The percentage after average results is the margin of error.
@@ -205,7 +207,7 @@ Bigger is better. The percentage after average results is the margin of error.
 As this table is getting a little wide, with how npm and github display it,
 you can also view it seperately in the [BENCHMARK](https://shared.by.re-becca.org/misc/BENCHMARK.html) document.
 
-|   | @iarna/toml |   | toml-j0.4 |   | toml |   | @sgarciac/bombadil |   | @ltd/j-toml |   |
+|   | @tauri-apps/toml |   | toml-j0.4 |   | toml |   | @sgarciac/bombadil |   | @ltd/j-toml |   |
 | - | ----------- | - | --------- | - | ---- | - | ------------------ | - | ----------- | - |
 | Overall | 25MB/sec | 0.55% | 7MB/sec | 1.39% | 0.2MB/sec | 3.47% | - | - | 38MB/sec | 1.37% |
 | Spec Example: v0.4.0 | 23MB/sec | 0.87% | 10MB/sec | 0.62% | 1MB/sec | 1.89% | 1.7MB/sec | 1.03% | 35MB/sec | 1.32% |
@@ -240,7 +242,7 @@ The test suite is maintained at 100% coverage: [![Coverage Status](https://cover
 The spec was carefully hand converted into a series of test framework
 independent (and mostly language independent) assertions, as pairs of TOML
 and YAML files.  You can find those files here:
-[spec-test](https://github.com/iarna/iarna-toml/blob/latest/test/spec-test/). 
+[spec-test](https://github.com/iarna/iarna-toml/blob/latest/test/spec-test/).
 A number of examples of invalid Unicode were also written, but are difficult
 to make use of in Node.js where Unicode errors are silently hidden.  You can
 find those here: [spec-test-disabled](https://github.com/iarna/iarna-toml/blob/latest/test/spec-test-disabled/).
