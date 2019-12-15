@@ -77,7 +77,7 @@ function isInline (value) {
     case 'array':
       return value.length === 0 || tomlType(value[0]) !== 'table'
     case 'table':
-      return Object.keys(value).length === 0
+      return value.__tomlInline || Object.keys(value).length === 0
     /* istanbul ignore next */
     default:
       return false
@@ -253,7 +253,7 @@ function stringifyInlineTable (value) {
   value = toJSON(value)
   var result = []
   Object.keys(value).forEach(key => {
-    result.push(stringifyKey(key) + ' = ' + stringifyAnyInline(value[key], false))
+    key !== '__tomlInline' && result.push(stringifyKey(key) + ' = ' + stringifyAnyInline(value[key], false))
   })
   return '{ ' + result.join(', ') + (result.length > 0 ? ' ' : '') + '}'
 }

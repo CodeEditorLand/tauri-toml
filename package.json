@@ -1,6 +1,6 @@
 {
   "name": "@tauri-apps/toml",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "main": "toml.js",
   "funding": {
     "type": "opencollective",
