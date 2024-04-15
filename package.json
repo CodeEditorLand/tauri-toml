@@ -1,4 +1,12 @@
 {
+	"author": {
+		"email": "Land@Playform.Cloud",
+		"name": "Land",
+		"url": "HTTPS://Land.Playform.Cloud"
+	},
+	"bugs": {
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/TauriToml/issues"
+	},
 	"dependencies": {},
 	"description": "Better TOML parsing and stringifying all in that familiar JSON interface.",
 	"devDependencies": {
@@ -6,6 +14,7 @@
 		"@ltd/j-toml": "1.38.0",
 		"@perl/qx": "1.1.0",
 		"@playform/build": "0.0.7",
+		"@playform/document": "0.0.6",
 		"@sgarciac/bombadil": "2.3.0",
 		"ansi": "0.3.1",
 		"approximate-number": "2.1.1",
@@ -45,8 +54,18 @@
 		"type": "opencollective",
 		"url": "https://opencollective.com/tauri"
 	},
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/TauriToml#readme",
+	"license": "SEE LICENSE IN LICENSE",
 	"main": "toml.js",
 	"name": "@tauri-apps/toml",
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+HTTPS://github.com/CodeEditorLand/TauriToml.git"
+	},
 	"scripts": {
 		"Document": "Document 'Source/**/*.ts'",
 		"benchmark": "node benchmark.js && node benchmark-per-file.js && node results2table.js",
@@ -59,5 +78,7 @@
 		"setup-iarna-toml-suite": "[ -d test/spec-test ] || (git clone https://github.com/iarna/toml-spec-tests -b 0.5.0 test/spec-test; rimraf test/spec-test/.git/hooks/*); cd test/spec-test; git pull",
 		"update-coc": "weallbehave -o . && git add CODE_OF_CONDUCT.md && git commit -m 'docs(coc): updated CODE_OF_CONDUCT.md'",
 		"update-contrib": "weallcontribute -o . && git add CONTRIBUTING.md && git commit -m 'docs(contributing): updated CONTRIBUTING.md'"
-	}
+	},
+	"type": "module",
+	"version": "0.0.1"
 }
