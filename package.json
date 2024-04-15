@@ -3,13 +3,13 @@
 	"version": "0.0.1",
 	"private": false,
 	"description": "Better TOML parsing and stringifying all in that familiar JSON interface.",
-	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/TauriToml#readme",
 	"bugs": {
-		"url": "https://github.com/CodeEditorLand/Foundation/issues"
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/TauriToml/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+HTTPS://github.com/CodeEditorLand/Foundation.git"
+		"url": "git+HTTPS://github.com/CodeEditorLand/TauriToml.git"
 	},
 	"funding": {
 		"type": "opencollective",
