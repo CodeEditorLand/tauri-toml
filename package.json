@@ -3,6 +3,9 @@
 	"version": "0.0.1",
 	"private": false,
 	"description": "Better TOML parsing and stringifying all in that familiar JSON interface.",
+	"keywords": [
+		"land"
+	],
 	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/TauriToml#readme",
 	"bugs": {
 		"url": "HTTPS://GitHub.Com/CodeEditorLand/TauriToml/issues"
