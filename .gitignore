@@ -1,0 +1,8 @@
+node_modules
+*~
+.#*
+.nyc_output
+coverage
+benchmark-results.json
+test/burntsushi-toml-test/
+test/spec-test/

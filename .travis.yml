@@ -1,0 +1,24 @@
+language: node_js
+sudo: false
+matrix:
+  include:
+    - node_js: "11"
+      install:
+        - "mv node_modules/.cache . || true"
+        - "npm ci"
+        - "mv .cache node_modules/ || true"
+      script:
+        - "npm t"
+    - node_js: "10"
+    - node_js: "8"
+    - node_js: "6"
+    - node_js: "4"
+      install:
+        - "mv package-lock.json npm-shrinkwrap.json"
+        - "npm i"
+cache:
+  directories:
+  - node_modules/.cache
+  - ~/.npm
+script:
+  - "tap -J test/*.js test/toml-stream/*.js"
