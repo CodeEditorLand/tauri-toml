@@ -1,24 +1,26 @@
-'use strict'
-const TOML = require('..')
-const util = require('util')
-const dump = d => util.inspect(d, {colors: true, depth: Infinity})
+const TOML = require("..");
+const util = require("util");
+const dump = (d) =>
+	util.inspect(d, { colors: true, depth: Number.POSITIVE_INFINITY });
 
-success().then(() => failure())
+success().then(() => failure());
 
-function success () {
-  let testtoml = `a = [1.0,1e0]`
+function success() {
+	const testtoml = `a = [1.0,1e0]`;
 
-  console.log('Parsing:', testtoml)
-  return TOML.parse.async(testtoml, {blocksize: 4})
-    .then(_ => console.log('Result:', dump(_)))
-    .catch(_ => console.error('Error:', _.message))
+	console.log("Parsing:", testtoml);
+	return TOML.parse
+		.async(testtoml, { blocksize: 4 })
+		.then((_) => console.log("Result:", dump(_)))
+		.catch((_) => console.error("Error:", _.message));
 }
 
-function failure () {
-  let testtoml = `a = [1.0,1e0`
+function failure() {
+	const testtoml = `a = [1.0,1e0`;
 
-  console.log('Parsing:', testtoml)
-  return TOML.parse.async(testtoml, {blocksize: 4})
-    .then(_ => console.log('Result:', dump(_)))
-    .catch(_ => console.error('Error:', _.message))
+	console.log("Parsing:", testtoml);
+	return TOML.parse
+		.async(testtoml, { blocksize: 4 })
+		.then((_) => console.log("Result:", dump(_)))
+		.catch((_) => console.error("Error:", _.message));
 }
