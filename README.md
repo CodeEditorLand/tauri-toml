@@ -187,7 +187,7 @@ to get a version of this module that supports 0.4.0.  Please see the
 I write a by hand, honest-to-god,
 [CHANGELOG](https://github.com/iarna/iarna-toml/blob/latest/CHANGELOG.md)
 for this project.  It's a description of what went into a release that you
-the consumer of the module could care about, not a list of git commits, so
+the consumer of the module could care about, not a list of git ecommits, so
 please check it out!
 
 ## Benchmarks
