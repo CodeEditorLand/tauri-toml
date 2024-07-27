@@ -1,24 +1,11 @@
 {
-	"dependencies": {},
+	"name": "@tauri-apps/toml",
 	"description": "Better TOML parsing and stringifying all in that familiar JSON interface.",
-	"devDependencies": {
-		"@iarna/standard": "2.0.1",
-		"@ltd/j-toml": "0.5.47",
-		"@perl/qx": "1.0.2",
-		"@sgarciac/bombadil": "2.1.0",
-		"ansi": "0.3.1",
-		"approximate-number": "2.0.0",
-		"benchmark": "2.1.4",
-		"funstream": "3.0.0",
-		"glob": "7.1.2",
-		"js-yaml": "3.12.0",
-		"rimraf": "2.6.2",
-		"tap": "12.0.1",
-		"toml": "3.0.0",
-		"toml-j0.4": "1.1.1",
-		"weallbehave": "*",
-		"weallcontribute": "*"
+	"funding": {
+		"type": "opencollective",
+		"url": "https://opencollective.com/tauri"
 	},
+	"main": "toml.js",
 	"directories": {
 		"test": "test"
 	},
@@ -40,21 +27,34 @@
 		"lib/format-num.js",
 		"index.d.ts"
 	],
-	"funding": {
-		"type": "opencollective",
-		"url": "https://opencollective.com/tauri"
-	},
-	"main": "toml.js",
-	"name": "@tauri-apps/toml",
 	"scripts": {
 		"benchmark": "node benchmark.js && node benchmark-per-file.js && node results2table.js",
-		"postpublish": "git push --follow-tags",
 		"prepack": "rm -f *~",
 		"prepare": "npm run setup-burntsushi-toml-suite && npm run setup-iarna-toml-suite",
 		"prerelease": "npm t",
+		"postpublish": "git push --follow-tags",
 		"setup-burntsushi-toml-suite": "[ -d test/burntsushi-toml-test ] || (git clone https://github.com/BurntSushi/toml-test test/burntsushi-toml-test; rimraf test/burntsushi-toml-test/.git/hooks/*); cd test/burntsushi-toml-test; git pull",
 		"setup-iarna-toml-suite": "[ -d test/spec-test ] || (git clone https://github.com/iarna/toml-spec-tests -b 0.5.0 test/spec-test; rimraf test/spec-test/.git/hooks/*); cd test/spec-test; git pull",
 		"update-coc": "weallbehave -o . && git add CODE_OF_CONDUCT.md && git commit -m 'docs(coc): updated CODE_OF_CONDUCT.md'",
 		"update-contrib": "weallcontribute -o . && git add CONTRIBUTING.md && git commit -m 'docs(contributing): updated CONTRIBUTING.md'"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@iarna/standard": "2.0.1",
+		"@ltd/j-toml": "0.5.47",
+		"@perl/qx": "1.0.2",
+		"@sgarciac/bombadil": "2.1.0",
+		"ansi": "0.3.1",
+		"approximate-number": "2.0.0",
+		"benchmark": "2.1.4",
+		"funstream": "3.0.0",
+		"glob": "7.1.2",
+		"js-yaml": "3.12.0",
+		"rimraf": "2.6.2",
+		"tap": "12.0.1",
+		"toml": "3.0.0",
+		"toml-j0.4": "1.1.1",
+		"weallbehave": "*",
+		"weallcontribute": "*"
 	}
 }
