@@ -1,0 +1,534 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charset="utf-8"/><meta name="keywords" content="@playform/document"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@tauri-apps/toml</title><meta name="description" content="Documentation for @tauri-apps/toml"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><link rel="stylesheet" href="assets/custom.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@tauri-apps/toml</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h2>@tauri-apps/toml</h2></div><div class="tsd-panel tsd-typography"><a id="md:tauri-appstoml" class="tsd-anchor"></a><h1 class="tsd-anchor-link">@tauri-apps/toml<a href="#md:tauri-appstoml" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><a id="md:this-is-a-fork-of-iarna-toml-so-that-we-can-make-some-needed-modifations-for-tauri" class="tsd-anchor"></a><h2 class="tsd-anchor-link">This is a fork of iarna-toml so that we can make some needed modifations for <code>tauri</code>.<a href="#md:this-is-a-fork-of-iarna-toml-so-that-we-can-make-some-needed-modifations-for-tauri" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Better TOML parsing and stringifying all in that familiar JSON interface.</p>
+<p><a href="https://coveralls.io/github/iarna/iarna-toml"><img src="https://coveralls.io/repos/github/iarna/iarna-toml/badge.svg" alt="Coverage Status"></a></p>
+<a id="md:-toml-050-" class="tsd-anchor"></a><h1 class="tsd-anchor-link">** TOML 0.5.0 **<a href="#md:-toml-050-" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><a id="md:toml-spec-support" class="tsd-anchor"></a><h3 class="tsd-anchor-link">TOML Spec Support<a href="#md:toml-spec-support" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>The most recent version as of 2018-07-26:
+<a href="https://github.com/mojombo/toml/blob/master/versions/en/toml-v0.5.0.md">v0.5.0</a></p>
+<a id="md:example" class="tsd-anchor"></a><h3 class="tsd-anchor-link">Example<a href="#md:example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="js"><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">TOML</span><span class="hl-1"> = </span><span class="hl-3">require</span><span class="hl-1">(</span><span class="hl-4">&quot;@tauri-apps/toml&quot;</span><span class="hl-1">);</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">obj</span><span class="hl-1"> = </span><span class="hl-2">TOML</span><span class="hl-1">.</span><span class="hl-3">parse</span><span class="hl-1">(</span><span class="hl-4">`[abc]</span><br/><span class="hl-4">foo = 123</span><br/><span class="hl-4">bar = [1,2,3]`</span><span class="hl-1">);</span><br/><span class="hl-5">/* obj =</span><br/><span class="hl-5">{abc: {foo: 123, bar: [1,2,3]}}</span><br/><span class="hl-5">*/</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">str</span><span class="hl-1"> = </span><span class="hl-2">TOML</span><span class="hl-1">.</span><span class="hl-3">stringify</span><span class="hl-1">(</span><span class="hl-6">obj</span><span class="hl-1">);</span><br/><span class="hl-5">/* str =</span><br/><span class="hl-5">[abc]</span><br/><span class="hl-5">foo = 123</span><br/><span class="hl-5">bar = [ 1, 2, 3 ]</span><br/><span class="hl-5">*/</span>
+</code><button type="button">Copy</button></pre>
+
+<p>Visit the project github
+<a href="https://github.com/iarna/iarna-toml/tree/latest/examples">for more examples</a>!</p>
+<a id="md:why-tauri-appstoml" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Why @tauri-apps/toml<a href="#md:why-tauri-appstoml" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>See
+<a href="https://shared.by.re-becca.org/misc/TOML-SPEC-SUPPORT.html">TOML-SPEC-SUPPORT</a>
+for a comparison of which TOML features are supported by the various Node.js
+TOML parsers.</li>
+<li>BigInt support on Node 10!</li>
+<li>100% test coverage.</li>
+<li>Faster parsing, even if you only use TOML 0.4.0, it's as much as 100 times
+faster than <code>toml</code> and 3 times faster than <code>toml-j0.4</code>. However a recent
+newcomer <a href="https://www.npmjs.com/package/@ltd/j-toml"><code>@ltd/j-toml</code></a> has
+appeared with 0.5 support and astoundingly fast parsing speeds for large
+text blocks. All I can say is you'll have to test your specific work loads
+if you want to know which of @tauri-apps/toml and @ltd/j-toml is faster for
+you, as we currently excell in different areas</li>
+<li>Careful adherence to spec. Tests go beyond simple coverage.</li>
+<li>Smallest parser bundle (if you use <code>@tauri-apps/toml/parse-string</code>).</li>
+<li>No deps.</li>
+<li>Detailed and easy to read error messages‼</li>
+</ul>
+<pre><code class="console"><span class="hl-1">&gt; TOML.parse(</span><span class="hl-3">src</span><span class="hl-1">)</span><br/><span class="hl-1">Error: Unexpected character, expecting string, number, datetime, boolean, inline array or inline table at row 6, col 5, pos 87:</span><br/><span class="hl-1">5: &quot;abc\&quot;&quot; = { abc=123,def=&quot;abc&quot; }</span><br/><span class="hl-1">6&gt; foo=sdkfj</span><br/><span class="hl-1">       ^</span><br/><span class="hl-1">7:</span>
+</code><button type="button">Copy</button></pre>
+
+<a id="md:tomlparsestr-→-object-example" class="tsd-anchor"></a><h2 class="tsd-anchor-link">TOML.parse(str) → Object <a href="https://github.com/iarna/iarna-toml/blob/latest/examples/parse.js">(example)</a><a href="#md:tomlparsestr-→-object-example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Also available with: <code>require('@tauri-apps/toml/parse-string')</code></p>
+<p>Synchronously parse a TOML string and return an object.</p>
+<a id="md:tomlstringifyobj-→-string-example" class="tsd-anchor"></a><h2 class="tsd-anchor-link">TOML.stringify(obj) → String <a href="https://github.com/iarna/iarna-toml/blob/latest/examples/stringify.js">(example)</a><a href="#md:tomlstringifyobj-→-string-example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Also available with: <code>require('@tauri-apps/toml/stringify)</code></p>
+<p>Serialize an object as TOML.</p>
+<a id="md:your-objecttojson" class="tsd-anchor"></a><h2 class="tsd-anchor-link">[your-object].toJSON<a href="#md:your-objecttojson" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>If an object <code>TOML.stringify</code> is serializing has a <code>toJSON</code> method then it will
+call it to transform the object before serializing it. This matches the behavior
+of <code>JSON.stringify</code>.</p>
+<p>The one exception to this is that <code>toJSON</code> is not called for <code>Date</code> objects
+because <code>JSON</code> represents dates as strings and TOML can represent them natively.</p>
+<p><a href="https://www.npmjs.com/package/moment"><code>moment</code></a> objects are treated the same as
+native <code>Date</code> objects, in this respect.</p>
+<a id="md:tomlstringifyvalueobj---string" class="tsd-anchor"></a><h2 class="tsd-anchor-link">TOML.stringify.value(obj) -&gt; String<a href="#md:tomlstringifyvalueobj---string" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Also available with: <code>require('@tauri-apps/toml/stringify').value</code></p>
+<p>Serialize a value as TOML would. This is a fragment and not a complete valid
+TOML document.</p>
+<a id="md:promises-and-streaming" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Promises and Streaming<a href="#md:promises-and-streaming" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>The parser provides alternative async and streaming interfaces, for times that
+you're working with really absurdly big TOML files and don't want to tie-up the
+event loop while it parses.</p>
+<a id="md:tomlparseasyncstr-opts-→-promiseobject-example" class="tsd-anchor"></a><h3 class="tsd-anchor-link">TOML.parse.async(str[, opts]) → Promise(Object) <a href="https://github.com/iarna/iarna-toml/blob/latest/examples/parse-async.js">(example)</a><a href="#md:tomlparseasyncstr-opts-→-promiseobject-example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>Also available with: <code>require('@tauri-apps/toml/parse-async')</code></p>
+<p><code>opts.blocksize</code> is the amount text to parser per pass through the event loop.
+Defaults to 40kb.</p>
+<p>Asynchronously parse a TOML string and return a promise of the resulting object.</p>
+<a id="md:tomlparsestreamreadable-→-promiseobject-example" class="tsd-anchor"></a><h3 class="tsd-anchor-link">TOML.parse.stream(readable) → Promise(Object) <a href="https://github.com/iarna/iarna-toml/blob/latest/examples/parse-stream-readable.js">(example)</a><a href="#md:tomlparsestreamreadable-→-promiseobject-example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>Also available with: <code>require('@tauri-apps/toml/parse-stream')</code></p>
+<p>Given a readable stream, parse it as it feeds us data. Return a promise of the
+resulting object.</p>
+<a id="md:readablepipetomlparsestream-→-transform-example" class="tsd-anchor"></a><h3 class="tsd-anchor-link">readable.pipe(TOML.parse.stream()) → Transform <a href="https://github.com/iarna/iarna-toml/blob/latest/examples/parse-stream-through.js">(example)</a><a href="#md:readablepipetomlparsestream-→-transform-example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>Also available with: <code>require('@tauri-apps/toml/parse-stream')</code></p>
+<p>Returns a transform stream in object mode. When it completes, emit the resulting
+object. Only one object will ever be emitted.</p>
+<a id="md:lowlevel-interface-example-example-w-parser-debugging" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Lowlevel Interface <a href="https://github.com/iarna/iarna-toml/blob/latest/examples/parse-lowlevel.js">(example)</a> <a href="https://github.com/iarna/iarna-toml/blob/latest/examples/parse-lowlevel-debug.js">(example w/ parser debugging)</a><a href="#md:lowlevel-interface-example-example-w-parser-debugging" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>You construct a parser object, per TOML file you want to process:</p>
+<pre><code class="js"><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">TOMLParser</span><span class="hl-1"> = </span><span class="hl-3">require</span><span class="hl-1">(</span><span class="hl-4">&quot;@tauri-apps/toml/lib/toml-parser.js&quot;</span><span class="hl-1">);</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">parser</span><span class="hl-1"> = </span><span class="hl-0">new</span><span class="hl-1"> </span><span class="hl-3">TOMLParser</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+<p>Then you call the <code>parse</code> method for each chunk as you read them, or in a single
+call:</p>
+<pre><code class="js"><span class="hl-6">parser</span><span class="hl-1">.</span><span class="hl-3">parse</span><span class="hl-1">(</span><span class="hl-4">`hello = &#39;world&#39;`</span><span class="hl-1">);</span>
+</code><button type="button">Copy</button></pre>
+
+<p>And finally, you call the <code>finish</code> method to complete parsing and retrieve the
+resulting object.</p>
+<pre><code class="js"><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">data</span><span class="hl-1"> = </span><span class="hl-6">parser</span><span class="hl-1">.</span><span class="hl-3">finish</span><span class="hl-1">();</span>
+</code><button type="button">Copy</button></pre>
+
+<p>Both the <code>parse</code> method and <code>finish</code> method will throw if they find a problem
+with the string they were given. Error objects thrown from the parser have
+<code>pos</code>, <code>line</code> and <code>col</code> attributes. <code>TOML.parse</code> adds a visual summary of where
+in the source string there were issues using <code>parse-pretty-error</code> and you can
+too:</p>
+<pre><code class="js"><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">prettyError</span><span class="hl-1"> = </span><span class="hl-3">require</span><span class="hl-1">(</span><span class="hl-4">&quot;./parse-pretty-error.js&quot;</span><span class="hl-1">);</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">newErr</span><span class="hl-1"> = </span><span class="hl-3">prettyError</span><span class="hl-1">(</span><span class="hl-6">err</span><span class="hl-1">, </span><span class="hl-6">sourceString</span><span class="hl-1">);</span>
+</code><button type="button">Copy</button></pre>
+
+<a id="md:whats-different" class="tsd-anchor"></a><h2 class="tsd-anchor-link">What's Different<a href="#md:whats-different" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Version 2 of this module supports TOML 0.5.0. Other modules currently published
+to the npm registry support 0.4.0. 0.5.0 is mostly backwards compatible with
+0.4.0, but if you have need, you can install @tauri-apps/toml@1 to get a version
+of this module that supports 0.4.0. Please see the
+<a href="CHANGELOG.md#2.0.0">CHANGELOG</a> for details on exactly whats changed.</p>
+<a id="md:toml-we-cant-do" class="tsd-anchor"></a><h2 class="tsd-anchor-link">TOML we can't do<a href="#md:toml-we-cant-do" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><code>-nan</code> is a valid TOML value and is converted into <code>NaN</code>. There is no way to
+produce <code>-nan</code> when stringifying. Stringification will produce positive
+<code>nan</code>.</li>
+<li>Detecting and erroring on invalid utf8 documents: This is because Node's
+UTF8 processing converts invalid sequences into the placeholder character
+and does not have facilities for reporting these as errors instead. We <em>can</em>
+detect the placeholder character, but it's valid to intentionally include
+them in documents, so erroring on them is not great.</li>
+<li>On versions of Node &lt; 10, very large Integer values will lose precision. On
+Node &gt;=10, bigints are used.</li>
+<li>Floating/local dates and times are still represented by JavaScript Date
+objects, which don't actually support these concepts. The objects returned
+have been modified so that you can determine what kind of thing they are
+(with <code>isFloating</code>, <code>isDate</code>, <code>isTime</code> properties) and that their ISO
+representation (via <code>toISOString</code>) is representative of their TOML value.
+They will correctly round trip if you pass them to <code>TOML.stringify</code>.</li>
+<li>Binary, hexadecimal and octal values are converted to ordinary integers and
+will be decimal if you stringify them.</li>
+</ul>
+<a id="md:changes" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Changes<a href="#md:changes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>I write a by hand, honest-to-god,
+<a href="https://github.com/iarna/iarna-toml/blob/latest/CHANGELOG.md">CHANGELOG</a> for
+this project. It's a description of what went into a release that you the
+consumer of the module could care about, not a list of git ecommits, so please
+check it out!</p>
+<a id="md:benchmarks" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Benchmarks<a href="#md:benchmarks" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>You can run them yourself with:</p>
+<pre><code class="console"><span class="hl-1">$ npm run benchmark</span>
+</code><button type="button">Copy</button></pre>
+
+<p>The results below are from my laptop using Node 11.10.0. The library versions
+tested were <code>@tauri-apps/toml@2.2.2</code>, <code>toml-j0.4@1.1.1</code>, <code>toml@3.0.0</code>,
+<code>@sgarciac/bombadil@2.1.0</code> and <code>@ltd/j-toml@0.5.47</code>. The speed value is
+megabytes-per-second that the parser can process of that document type. Bigger
+is better. The percentage after average results is the margin of error.</p>
+<p>As this table is getting a little wide, with how npm and github display it, you
+can also view it seperately in the
+<a href="https://shared.by.re-becca.org/misc/BENCHMARK.html">BENCHMARK</a> document.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>@tauri-apps/toml</th>
+<th></th>
+<th>toml-j0.4</th>
+<th></th>
+<th>toml</th>
+<th></th>
+<th>@sgarciac/bombadil</th>
+<th></th>
+<th>@ltd/j-toml</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Overall</td>
+<td>25MB/sec</td>
+<td>0.55%</td>
+<td>7MB/sec</td>
+<td>1.39%</td>
+<td>0.2MB/sec</td>
+<td>3.47%</td>
+<td>-</td>
+<td>-</td>
+<td>38MB/sec</td>
+<td>1.37%</td>
+</tr>
+<tr>
+<td>Spec Example: v0.4.0</td>
+<td>23MB/sec</td>
+<td>0.87%</td>
+<td>10MB/sec</td>
+<td>0.62%</td>
+<td>1MB/sec</td>
+<td>1.89%</td>
+<td>1.7MB/sec</td>
+<td>1.03%</td>
+<td>35MB/sec</td>
+<td>1.32%</td>
+</tr>
+<tr>
+<td>Spec Example: Hard Unicode</td>
+<td>57MB/sec</td>
+<td>1.46%</td>
+<td>16MB/sec</td>
+<td>0.66%</td>
+<td>2MB/sec</td>
+<td>2.25%</td>
+<td>0.8MB/sec</td>
+<td>0.57%</td>
+<td>93MB/sec</td>
+<td>1.79%</td>
+</tr>
+<tr>
+<td>Types: Array, Inline</td>
+<td>7.2MB/sec</td>
+<td>1.60%</td>
+<td>3.2MB/sec</td>
+<td>0.77%</td>
+<td>0.1MB/sec</td>
+<td>1.84%</td>
+<td>1.7MB/sec</td>
+<td>0.56%</td>
+<td>4.1MB/sec</td>
+<td>14.48%</td>
+</tr>
+<tr>
+<td>Types: Array</td>
+<td>6.9MB/sec</td>
+<td>0.47%</td>
+<td>5.8MB/sec</td>
+<td>0.46%</td>
+<td>0.1MB/sec</td>
+<td>3.67%</td>
+<td>1.4MB/sec</td>
+<td>0.76%</td>
+<td>2.5MB/sec</td>
+<td>8.19%</td>
+</tr>
+<tr>
+<td>Types: Boolean,</td>
+<td>22MB/sec</td>
+<td>0.85%</td>
+<td>8.5MB/sec</td>
+<td>0.55%</td>
+<td>0.2MB/sec</td>
+<td>1.83%</td>
+<td>2.1MB/sec</td>
+<td>1.29%</td>
+<td>5.6MB/sec</td>
+<td>0.58%</td>
+</tr>
+<tr>
+<td>Types: Datetime</td>
+<td>18MB/sec</td>
+<td>0.56%</td>
+<td>11MB/sec</td>
+<td>0.80%</td>
+<td>0.3MB/sec</td>
+<td>1.55%</td>
+<td>0.8MB/sec</td>
+<td>0.51%</td>
+<td>4.5MB/sec</td>
+<td>0.66%</td>
+</tr>
+<tr>
+<td>Types: Float</td>
+<td>9.2MB/sec</td>
+<td>0.71%</td>
+<td>5.2MB/sec</td>
+<td>1.12%</td>
+<td>0.3MB/sec</td>
+<td>2.04%</td>
+<td>2.6MB/sec</td>
+<td>0.86%</td>
+<td>3.7MB/sec</td>
+<td>0.61%</td>
+</tr>
+<tr>
+<td>Types: Int</td>
+<td>6.4MB/sec</td>
+<td>0.44%</td>
+<td>3.9MB/sec</td>
+<td>0.56%</td>
+<td>0.1MB/sec</td>
+<td>1.65%</td>
+<td>1.7MB/sec</td>
+<td>1.15%</td>
+<td>1.5MB/sec</td>
+<td>4.06%</td>
+</tr>
+<tr>
+<td>Types: Literal String, 7 char</td>
+<td>26MB/sec</td>
+<td>0.62%</td>
+<td>8.1MB/sec</td>
+<td>1.00%</td>
+<td>0.3MB/sec</td>
+<td>1.48%</td>
+<td>2.9MB/sec</td>
+<td>0.58%</td>
+<td>6MB/sec</td>
+<td>0.52%</td>
+</tr>
+<tr>
+<td>Types: Literal String, 92 char</td>
+<td>41MB/sec</td>
+<td>0.80%</td>
+<td>11MB/sec</td>
+<td>1.20%</td>
+<td>0.4MB/sec</td>
+<td>2.38%</td>
+<td>15MB/sec</td>
+<td>0.84%</td>
+<td>23MB/sec</td>
+<td>0.58%</td>
+</tr>
+<tr>
+<td>Types: Literal String, Multiline, 1079 char</td>
+<td>21MB/sec</td>
+<td>0.28%</td>
+<td>7.2MB/sec</td>
+<td>1.62%</td>
+<td>1.3MB/sec</td>
+<td>3.05%</td>
+<td>55MB/sec</td>
+<td>0.53%</td>
+<td>332MB/sec</td>
+<td>0.46%</td>
+</tr>
+<tr>
+<td>Types: Basic String, 7 char</td>
+<td>26MB/sec</td>
+<td>0.56%</td>
+<td>6.6MB/sec</td>
+<td>0.61%</td>
+<td>0.2MB/sec</td>
+<td>4.70%</td>
+<td>2.7MB/sec</td>
+<td>0.68%</td>
+<td>3.3MB/sec</td>
+<td>0.47%</td>
+</tr>
+<tr>
+<td>Types: Basic String, 92 char</td>
+<td>41MB/sec</td>
+<td>0.63%</td>
+<td>8MB/sec</td>
+<td>0.51%</td>
+<td>0.1MB/sec</td>
+<td>1.57%</td>
+<td>14MB/sec</td>
+<td>0.66%</td>
+<td>21MB/sec</td>
+<td>0.43%</td>
+</tr>
+<tr>
+<td>Types: Basic String, 1079 char</td>
+<td>21MB/sec</td>
+<td>0.36%</td>
+<td>6MB/sec</td>
+<td>0.81%</td>
+<td>0.1MB/sec</td>
+<td>1.81%</td>
+<td>51MB/sec</td>
+<td>0.53%</td>
+<td>13MB/sec</td>
+<td>0.62%</td>
+</tr>
+<tr>
+<td>Types: Table, Inline</td>
+<td>9.8MB/sec</td>
+<td>0.47%</td>
+<td>4.6MB/sec</td>
+<td>0.81%</td>
+<td>0.1MB/sec</td>
+<td>1.82%</td>
+<td>1.7MB/sec</td>
+<td>0.75%</td>
+<td>2.9MB/sec</td>
+<td>4.82%</td>
+</tr>
+<tr>
+<td>Types: Table</td>
+<td>6.9MB/sec</td>
+<td>0.43%</td>
+<td>4.9MB/sec</td>
+<td>0.46%</td>
+<td>0.1MB/sec</td>
+<td>3.59%</td>
+<td>1.6MB/sec</td>
+<td>0.88%</td>
+<td>4.4MB/sec</td>
+<td>0.53%</td>
+</tr>
+<tr>
+<td>Scaling: Array, Inline, 1000 elements</td>
+<td>33MB/sec</td>
+<td>2.15%</td>
+<td>2.5MB/sec</td>
+<td>1.07%</td>
+<td>0.1MB/sec</td>
+<td>3.57%</td>
+<td>1.8MB/sec</td>
+<td>0.64%</td>
+<td>8.7MB/sec</td>
+<td>4.12%</td>
+</tr>
+<tr>
+<td>Scaling: Array, Nested, 1000 deep</td>
+<td>1.6MB/sec</td>
+<td>2.50%</td>
+<td>1.2MB/sec</td>
+<td>0.49%</td>
+<td>0.1MB/sec</td>
+<td>3.62%</td>
+<td>-</td>
+<td>-</td>
+<td>1MB/sec</td>
+<td>3.79%</td>
+</tr>
+<tr>
+<td>Scaling: Literal String, 40kb</td>
+<td>56MB/sec</td>
+<td>0.58%</td>
+<td>12MB/sec</td>
+<td>1.03%</td>
+<td>3.6MB/sec</td>
+<td>4.00%</td>
+<td>17MB/sec</td>
+<td>0.54%</td>
+<td>498MB/sec</td>
+<td>0.52%</td>
+</tr>
+<tr>
+<td>Scaling: Literal String, Multiline, 40kb</td>
+<td>58MB/sec</td>
+<td>0.38%</td>
+<td>6.4MB/sec</td>
+<td>0.54%</td>
+<td>0.2MB/sec</td>
+<td>1.72%</td>
+<td>15MB/sec</td>
+<td>0.74%</td>
+<td>197MB/sec</td>
+<td>0.54%</td>
+</tr>
+<tr>
+<td>Scaling: Basic String, Multiline, 40kb</td>
+<td>57MB/sec</td>
+<td>1.03%</td>
+<td>7.2MB/sec</td>
+<td>1.22%</td>
+<td>3.4MB/sec</td>
+<td>4.24%</td>
+<td>15MB/sec</td>
+<td>0.75%</td>
+<td>840MB/sec</td>
+<td>0.52%</td>
+</tr>
+<tr>
+<td>Scaling: Basic String, 40kb</td>
+<td>57MB/sec</td>
+<td>0.43%</td>
+<td>8.6MB/sec</td>
+<td>0.57%</td>
+<td>0.2MB/sec</td>
+<td>1.71%</td>
+<td>17MB/sec</td>
+<td>0.51%</td>
+<td>394MB/sec</td>
+<td>0.54%</td>
+</tr>
+<tr>
+<td>Scaling: Table, Inline, 1000 elements</td>
+<td>27MB/sec</td>
+<td>0.46%</td>
+<td>7.5MB/sec</td>
+<td>0.71%</td>
+<td>0.3MB/sec</td>
+<td>2.24%</td>
+<td>3MB/sec</td>
+<td>0.74%</td>
+<td>2.3MB/sec</td>
+<td>0.81%</td>
+</tr>
+<tr>
+<td>Scaling: Table, Inline, Nested, 1000 deep</td>
+<td>7.8MB/sec</td>
+<td>0.61%</td>
+<td>4.3MB/sec</td>
+<td>0.83%</td>
+<td>0.1MB/sec</td>
+<td>2.93%</td>
+<td>-</td>
+<td>-</td>
+<td>1.2MB/sec</td>
+<td>13.45%</td>
+</tr>
+</tbody>
+</table>
+<a id="md:tests" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Tests<a href="#md:tests" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>The test suite is maintained at 100% coverage:
+<a href="https://coveralls.io/github/iarna/iarna-toml"><img src="https://coveralls.io/repos/github/iarna/iarna-toml/badge.svg" alt="Coverage Status"></a></p>
+<p>The spec was carefully hand converted into a series of test framework
+independent (and mostly language independent) assertions, as pairs of TOML and
+YAML files. You can find those files here:
+<a href="https://github.com/iarna/iarna-toml/blob/latest/test/spec-test/">spec-test</a>. A
+number of examples of invalid Unicode were also written, but are difficult to
+make use of in Node.js where Unicode errors are silently hidden. You can find
+those here:
+<a href="https://github.com/iarna/iarna-toml/blob/latest/test/spec-test-disabled/">spec-test-disabled</a>.</p>
+<p>Further tests were written to increase coverage to 100%, these may be more
+implementation specific, but they can be found in
+<a href="https://github.com/iarna/iarna-toml/blob/latest/test/coverage.js">coverage</a> and
+<a href="https://github.com/iarna/iarna-toml/blob/latest/test/coverage-error.js">coverage-error</a>.</p>
+<p>I've also written some quality assurance style tests, which don't contribute to
+coverage but do cover scenarios that could easily be problematic for some
+implementations can be found in:
+<a href="https://github.com/iarna/iarna-toml/blob/latest/test/qa.js">test/qa.js</a> and
+<a href="https://github.com/iarna/iarna-toml/blob/latest/test/qa-error.js">test/qa-error.js</a>.</p>
+<p>All of the official example files from the TOML spec are run through this parser
+and compared to the official YAML files when available. These files are from the
+TOML spec as of:
+<a href="https://github.com/toml-lang/toml/tree/357a4ba6782e48ff26e646780bab11c90ed0a7bc">357a4ba6</a>
+and specifically are:</p>
+<ul>
+<li><a href="https://github.com/toml-lang/toml/tree/357a4ba6782e48ff26e646780bab11c90ed0a7bc/examples">github.com/toml-lang/toml/tree/357a4ba6/examples</a></li>
+<li><a href="https://github.com/toml-lang/toml/tree/357a4ba6782e48ff26e646780bab11c90ed0a7bc/tests">github.com/toml-lang/toml/tree/357a4ba6/tests</a></li>
+</ul>
+<p>The stringifier is tested by round-tripping these same files, asserting that
+<code>TOML.parse(sourcefile)</code> deepEqual
+<code>TOML.parse(TOML.stringify(TOML.parse(sourcefile))</code>. This is done in
+<a href="https://github.com/iarna/iarna-toml/blob/latest/test/round-tripping.js">test/roundtrip-examples.js</a>
+There are also some tests written to complete coverage from stringification in:
+<a href="https://github.com/iarna/iarna-toml/blob/latest/test/stringify.js">test/stringify.js</a></p>
+<p>Tests for the async and streaming interfaces are in
+<a href="https://github.com/iarna/iarna-toml/blob/latest/test/async.js">test/async.js</a>
+and
+<a href="https://github.com/iarna/iarna-toml/blob/latest/test/stream.js">test/stream.js</a>
+respectively.</p>
+<p>Tests for the parsers debugging mode live in
+<a href="https://github.com/iarna/iarna-toml/blob/latest/test/devel.js">test/devel.js</a>.</p>
+<p>And finally, many more stringification tests were borrowed from
+<a href="https://github.com/othiym23">@othiym23</a>'s
+<a href="https://npmjs.com/package/toml-stream">toml-stream</a> module. They were fetched
+as of
+<a href="https://github.com/othiym23/toml-stream/tree/b6f1e26b572d49742d49fa6a6d11524d003441fa/test">b6f1e26b572d49742d49fa6a6d11524d003441fa</a>
+and live in
+<a href="https://github.com/iarna/iarna-toml/blob/latest/test/toml-stream/">test/toml-stream</a>.</p>
+<a id="md:improvements-to-make" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Improvements to make<a href="#md:improvements-to-make" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>In stringify:
+<ul>
+<li>Any way to produce comments. As a JSON stand-in I'm not too worried
+about this. That said, a document orientated fork is something I'd like
+to look at eventually…</li>
+<li>Stringification could use some work on its error reporting. It reports
+<em>what's</em> wrong, but not where in your data structure it was.</li>
+</ul>
+</li>
+<li>Further optimize the parser:
+<ul>
+<li>There are some debugging assertions left in the main parser, these
+should be moved to a subclass.</li>
+<li>Make the whole debugging parser thing work as a mixin instead of as a
+superclass.</li>
+</ul>
+</li>
+</ul>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#md:tauri-appstoml"><span>@tauri-<wbr/>apps/toml</span></a><ul><li><a href="#md:this-is-a-fork-of-iarna-toml-so-that-we-can-make-some-needed-modifations-for-tauri"><span>This is a fork of iarna-<wbr/>toml so that we can make some needed modifations for tauri.</span></a></li></ul><a href="#md:-toml-050-"><span>** TOML 0.5.0 **</span></a><ul><li><ul><li><a href="#md:toml-spec-support"><span>TOML <wbr/>Spec <wbr/>Support</span></a></li><li><a href="#md:example"><span>Example</span></a></li></ul></li><li><a href="#md:why-tauri-appstoml"><span>Why @tauri-<wbr/>apps/toml</span></a></li><li><a href="#md:tomlparsestr-→-object-example"><span>TOML.parse(str) → <wbr/>Object (example)</span></a></li><li><a href="#md:tomlstringifyobj-→-string-example"><span>TOML.stringify(obj) → <wbr/>String (example)</span></a></li><li><a href="#md:your-objecttojson"><span>[your-<wbr/>object].toJSON</span></a></li><li><a href="#md:tomlstringifyvalueobj---string"><span>TOML.stringify.value(obj) -<wbr/>&gt; <wbr/>String</span></a></li><li><a href="#md:promises-and-streaming"><span>Promises and <wbr/>Streaming</span></a></li><li><ul><li><a href="#md:tomlparseasyncstr-opts-→-promiseobject-example"><span>TOML.parse.async(str[, opts]) → <wbr/>Promise(<wbr/>Object) (example)</span></a></li><li><a href="#md:tomlparsestreamreadable-→-promiseobject-example"><span>TOML.parse.stream(readable) → <wbr/>Promise(<wbr/>Object) (example)</span></a></li><li><a href="#md:readablepipetomlparsestream-→-transform-example"><span>readable.pipe(TOML.parse.stream()) → <wbr/>Transform (example)</span></a></li></ul></li><li><a href="#md:lowlevel-interface-example-example-w-parser-debugging"><span>Lowlevel <wbr/>Interface (example) (example w/ parser debugging)</span></a></li><li><a href="#md:whats-different"><span>What&#39;s <wbr/>Different</span></a></li><li><a href="#md:toml-we-cant-do"><span>TOML we can&#39;t do</span></a></li><li><a href="#md:changes"><span>Changes</span></a></li><li><a href="#md:benchmarks"><span>Benchmarks</span></a></li><li><a href="#md:tests"><span>Tests</span></a></li><li><a href="#md:improvements-to-make"><span>Improvements to make</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-1"></use></svg><span>@tauri-apps/toml</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base="."><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>
