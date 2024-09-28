@@ -1,9 +1,29 @@
 {
 	"name": "@tauri-apps/toml",
 	"description": "Better TOML parsing and stringifying all in that familiar JSON interface.",
+<<<<<<< HEAD
 	"funding": {
 		"type": "opencollective",
 		"url": "https://opencollective.com/tauri"
+=======
+	"devDependencies": {
+		"@iarna/standard": "2.0.2",
+		"@ltd/j-toml": "1.38.0",
+		"@perl/qx": "1.1.0",
+		"@sgarciac/bombadil": "2.3.0",
+		"ansi": "0.3.1",
+		"approximate-number": "2.1.1",
+		"benchmark": "2.1.4",
+		"funstream": "4.2.0",
+		"glob": "11.0.0",
+		"js-yaml": "4.1.0",
+		"rimraf": "6.0.1",
+		"tap": "21.0.1",
+		"toml": "3.0.0",
+		"toml-j0.4": "1.1.1",
+		"weallbehave": "*",
+		"weallcontribute": "*"
+>>>>>>> 8c02156ce10f108aa8619ffa676228413d6aba0a
 	},
 	"main": "toml.js",
 	"directories": {
