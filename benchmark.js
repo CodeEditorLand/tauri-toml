@@ -24,114 +24,124 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-const assertIsDeeply = require('./assert-is-deeply.js')
-const fs = require('fs')
-const glob = require('glob').sync
-const cursor = require('ansi')(process.stdout)
-const Benchmark = require('benchmark')
-const parseIarnaToml = require('./parse-string.js')
-const parseToml = require('toml').parse
-const parseTomlj04 = require('toml-j0.4').parse
-const bombadil = require('@sgarciac/bombadil')
-function parseBombadil (str) {
-  const reader = new bombadil.TomlReader()
-  reader.readToml(str)
-  if (reader.result === null) throw reader.errors
-  return reader.result
+const assertIsDeeply = require("./assert-is-deeply.js");
+const fs = require("fs");
+const glob = require("glob").sync;
+const cursor = require("ansi")(process.stdout);
+const Benchmark = require("benchmark");
+const parseIarnaToml = require("./parse-string.js");
+const parseToml = require("toml").parse;
+const parseTomlj04 = require("toml-j0.4").parse;
+const bombadil = require("@sgarciac/bombadil");
+function parseBombadil(str) {
+	const reader = new bombadil.TomlReader();
+	reader.readToml(str);
+	if (reader.result === null) throw reader.errors;
+	return reader.result;
 }
-const ltdToml = require('@ltd/j-toml')
-function parseLtdToml (str) {
-  return ltdToml.parse(str, 0.5, '\n')
+const ltdToml = require("@ltd/j-toml");
+function parseLtdToml(str) {
+	return ltdToml.parse(str, 0.5, "\n");
 }
 const fixtures = glob(`${__dirname}/benchmark/*.toml`)
-  .concat(glob(`${__dirname}/test/spec-test/*toml`))
-/* eslint-disable security/detect-non-literal-fs-filename */
-  .map(_ => ({name: _, data: fs.readFileSync(_, {encoding: 'utf8'})}))
+	.concat(glob(`${__dirname}/test/spec-test/*toml`))
+	/* eslint-disable security/detect-non-literal-fs-filename */
+	.map((_) => ({ name: _, data: fs.readFileSync(_, { encoding: "utf8" }) }));
 /* eslint-enable security/detect-non-literal-fs-filename */
-fixtures.forEach(_ => { _.answer = parseIarnaToml(_.data) })
-var results
+fixtures.forEach((_) => {
+	_.answer = parseIarnaToml(_.data);
+});
+var results;
 
-console.error(fixtures.reduce((acc, _) => acc + _.data.length, 0))
+console.error(fixtures.reduce((acc, _) => acc + _.data.length, 0));
 try {
-  results = JSON.parse(fs.readFileSync('./benchmark-results.json'))
+	results = JSON.parse(fs.readFileSync("./benchmark-results.json"));
 } catch (_) {
-  results = {}
+	results = {};
 }
 
 const suite = new Benchmark.Suite({
-  onStart: function () {
-    console.log('Overall Benchmarking...')
-  },
-  onComplete: function () {
-    console.log('Overall Successful:\n\t' +
-        this.filter('successful').map('name').join(', '))
-    console.log('Overall Fastest:\n\t' +
-        this.filter('fastest').map('name').join(', '))
-    if (!results[process.version]) results[process.version] = {}
-    const data = results[process.version].overall = {}
-    this.forEach(_ => {
-      const name = _.name || (_.isNaN(_.id) ? _.id : '<Test #' + _.id + '>')
-      if (_.error) {
-        data[name] = { crashed: true }
-      } else {
-        data[name] = {
-          opsec: _.hz.toFixed(_.hz < 100 ? 2 : 0),
-          errmargin: _.stats.rme.toFixed(2),
-          samples: _.stats.sample.length
-        }
-      }
-    })
-    fs.writeFileSync('benchmark-results.json', JSON.stringify(results, null, 2))
-  },
-  onError: function (event) {
-    console.error(event.target.error)
-  }
-})
+	onStart: function () {
+		console.log("Overall Benchmarking...");
+	},
+	onComplete: function () {
+		console.log(
+			"Overall Successful:\n\t" +
+				this.filter("successful").map("name").join(", "),
+		);
+		console.log(
+			"Overall Fastest:\n\t" +
+				this.filter("fastest").map("name").join(", "),
+		);
+		if (!results[process.version]) results[process.version] = {};
+		const data = (results[process.version].overall = {});
+		this.forEach((_) => {
+			const name =
+				_.name || (_.isNaN(_.id) ? _.id : "<Test #" + _.id + ">");
+			if (_.error) {
+				data[name] = { crashed: true };
+			} else {
+				data[name] = {
+					opsec: _.hz.toFixed(_.hz < 100 ? 2 : 0),
+					errmargin: _.stats.rme.toFixed(2),
+					samples: _.stats.sample.length,
+				};
+			}
+		});
+		fs.writeFileSync(
+			"benchmark-results.json",
+			JSON.stringify(results, null, 2),
+		);
+	},
+	onError: function (event) {
+		console.error(event.target.error);
+	},
+});
 
-const onCycle = event => {
-  cursor.horizontalAbsolute()
-  cursor.eraseLine()
-  cursor.write('\t' + event.target)
-}
-const onComplete = () => cursor.write('\n')
+const onCycle = (event) => {
+	cursor.horizontalAbsolute();
+	cursor.eraseLine();
+	cursor.write("\t" + event.target);
+};
+const onComplete = () => cursor.write("\n");
 
 const tests = {
-  '@iarna/toml': parseIarnaToml,
-  'toml-j0.4': parseTomlj04,
-  'toml': parseToml,
-  '@sgarciac/bombadil': parseBombadil,
-  '@ltd/j-toml': parseLtdToml
-}
+	"@iarna/toml": parseIarnaToml,
+	"toml-j0.4": parseTomlj04,
+	"toml": parseToml,
+	"@sgarciac/bombadil": parseBombadil,
+	"@ltd/j-toml": parseLtdToml,
+};
 
-Object.keys(tests).forEach(name => {
-  const parse = tests[name]
-  let lastFixture
-  try {
-    fixtures.forEach(_ => {
-      lastFixture = _
-      assertIsDeeply(parse(_.data), _.answer)
-    })
-    suite.add(name, {
-      maxTime: 15,
-      onCycle,
-      onComplete,
-      fn () {
-        fixtures.forEach(_ => {
-          parse(_.data)
-        })
-      }
-    })
-  } catch (_) {
-    console.error('Skipping', name, lastFixture.name + ':', 'failed')
-    suite.add(name, {
-      maxTime: 15,
-      onCycle,
-      onComplete,
-      fn () {
-        throw new Error('skipping')
-      }
-    })
-  }
-})
+Object.keys(tests).forEach((name) => {
+	const parse = tests[name];
+	let lastFixture;
+	try {
+		fixtures.forEach((_) => {
+			lastFixture = _;
+			assertIsDeeply(parse(_.data), _.answer);
+		});
+		suite.add(name, {
+			maxTime: 15,
+			onCycle,
+			onComplete,
+			fn() {
+				fixtures.forEach((_) => {
+					parse(_.data);
+				});
+			},
+		});
+	} catch (_) {
+		console.error("Skipping", name, lastFixture.name + ":", "failed");
+		suite.add(name, {
+			maxTime: 15,
+			onCycle,
+			onComplete,
+			fn() {
+				throw new Error("skipping");
+			},
+		});
+	}
+});
 
-suite.run()
+suite.run();
