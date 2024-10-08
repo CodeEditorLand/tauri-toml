@@ -1,8 +1,8 @@
-BurntSushi tests are for TOML 0.4.0 and are from
-<a href="https://github.com/BurntSushi/toml-test">here</a>.<br> <br> iarna tests
-are for TOML 0.5.0 and are from
-<a href="https://github.com/iarna/toml-spec-tests">here</a>.<br> <br>
 
+BurntSushi tests are for TOML 0.4.0 and are from <a href="https://github.com/BurntSushi/toml-test">here</a>.<br>
+<br>
+iarna tests are for TOML 0.5.0 and are from <a href="https://github.com/iarna/toml-spec-tests">here</a>.<br>
+<br>
 <table>
 <tr><th>Test</th><th>@iarna/toml @2.2.3</th><th>toml @3.0.0</th><th>toml-j0.4 @1.1.1</th><th>@sgarciac/bombadil @2.1.0</th><th>@ltd/j-toml @0.5.47</th></tr>
 
